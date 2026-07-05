@@ -1,0 +1,28 @@
+name: Build iOS Tweak
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install Theos
+      run: |
+        sudo git clone --recursive https://github.com/theos/theos.git /opt/theos
+        sudo ln -s /opt/theos /theos
+        echo "$PATH"
+
+    - name: Build tweak
+      run: |
+        export THEOS=/opt/theos
+        make package
+        make package FINALPACKAGE=1
+
+    - name: Upload .deb
+      uses: actions/upload-artifact@v3
+      with:
+        name: hoangha-aimbot
+        path: packages/*.deb

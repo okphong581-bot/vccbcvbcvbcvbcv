@@ -1,0 +1,9 @@
+Package: hoangha.aimbot
+Name: HoangHa Aimbot
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Free Fire aimbot skeleton lock for HoangHa
+Maintainer: HoangHa
+Author: HoangHa
+Section: Apps
+Depends: firmware (>= 14.0)
